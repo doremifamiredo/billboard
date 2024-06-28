@@ -29,10 +29,31 @@ public class BillboardTest {
         board.addNewMovie("Film III");
 
         String[] expected = {"Film III", "Film II", "Film I"};
-        String[] actual = board.findLast();
 
-        Assertions.assertArrayEquals(expected, actual);
+        Assertions.assertArrayEquals(expected, board.findLast());
+    }
 
+    @Test
+    public void findLastFilmWhenLessLimit() {
+        BillboardMovie board = new BillboardMovie(4);
+        board.addNewMovie("Film I");
+        board.addNewMovie("Film II");
+        board.addNewMovie("Film III");
 
+        String[] expected = {"Film III", "Film II", "Film I"};
+
+        Assertions.assertArrayEquals(expected, board.findLast());
+    }
+
+    @Test
+    public void findLastFilmWhenMoreLimit() {
+        BillboardMovie board = new BillboardMovie(2);
+        board.addNewMovie("Film I");
+        board.addNewMovie("Film II");
+        board.addNewMovie("Film III");
+
+        String[] expected = {"Film III", "Film II"};
+
+        Assertions.assertArrayEquals(expected, board.findLast());
     }
 }
